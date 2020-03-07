@@ -9,8 +9,7 @@
       <label for="email" >Email</label>
       <input v-model="email" id="email" class="form-control" type="text">
       <br>
-      <button v-show="!editMode" @click.prevent="addCustomer" class="btn btn-info">Create customer</button>
-      <button v-show="editMode" @click.prevent="saveNewData" class="btn btn-success">Create customer</button>
+      <button @click.prevent="addCustomer" class="btn btn-info">Create customer</button>
     </form> 
     <hr>
 
@@ -31,62 +30,60 @@
         <td>{{ customer.firstName }}</td>
         <td>{{ customer.lastName }}</td>
         <td>{{ customer.email }}</td>
-        <td><button @click="deleteCustomer(customer)" class="btn btn-danger">Delete</button></td>
-        <td><button class="btn btn-success">Lista proizvoda</button></td>
+        <td><button @click="deleteCustomer(customer.id)" class="btn btn-danger">Delete</button></td>
+        <td><router-link class="btn btn-success" :to="{ name: 'customer' , params: {id: customer.id}}">Pokazi detalje</router-link></td><!-- RESENJE BROJ 1, RADI -->
+        <!--<router-link :to="getCustomerRoute(customer.id)" class="btn btn-success top-margin">Pokazi detalje</router-link>--><!-- RESENJE BROJ 2, RADI -->
       </tr>
     </table>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
+import { customerService } from '../services/Customer.Service';
 
 export default {
   name: 'AppCustomers',
   data(){
     return {
-      editMode: false,
-      whatToEdit:'',
-      startId: 0,
-      allId: [],
-
-      customers: [
-        { id: 1, firstName: 'Miki', lastName: 'Mikic', email: 'miki@gmail.com', listaProizvoda: [], },
-        { id: 2, firstName: 'Ziki', lastName: 'Zikic', email: 'ziki@gmail.com', listaProizvoda: [], },
-      ]
+      customers: customerService.getAllCustomers(),
+      firstName: '',
+      lastName: '',
+      email: '',
     }
   },
   components: {
     
   },
   methods: {
-    deleteCustomer(customer){
-      const index = this.customers.indexOf(customer);
-      this.customers.splice(index, 1);
+    deleteCustomer(id){
+      console.log(id);
+      console.log('service called');
+      customerService.deleteCustomerService(id);//OK, ovde cemo imati problem. Iako ce servis izbrisati customera na osnovu ove komande, to ce se desiti na servisu, i ova strana to nece znati, pa izbrisani customer nece nestati sa displeja...
+      this.customers = customerService.getAllCustomers()//...Zato nam je potrebna ova linija ovde. ovo ovako refreshuje sve, i ovako ce se prikazati refreshovana strana bez izbrisanog customera.
+      
     },
-
-    createCustomer(){
-      return {
-        id: this.idCreator(),
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-      }
+    getCustomerRoute(id) {
+      return `/customers/${id}`;
     },
-
-    addCustomer(){
-      this.customers.unshift(this.createCustomer());
-    },
-
-    idCreator(){
-      let id = "id" + Math.random().toString(16).slice(2);
-      return id;
-    }
+    
 
   }
 }
 </script>
 
+
+
+
+
+
+
+
+
+
 <style>
+.top-margin{
+  margin-top: 12px;
+}
 
 </style>
