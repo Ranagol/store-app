@@ -1,4 +1,4 @@
-let customers = [//zasto ovo nije unutar klase CustomerService?
+let customers = [
   { id: 1, firstName: 'Pera', lastName: 'Peric', email: 'peric@pera.com', boughtProducts: [] },
   { id: 2, firstName: 'Zika', lastName: 'Zikic', email: 'zika@gmail.com', boughtProducts: [] }
 ];
@@ -25,6 +25,15 @@ export default class CustomerService {
     lastId ++;
     newCustomer.id = lastId;
   }
+
+  showCustomer(id){
+    let customer = customers.find(customer => customer.id == id);
+    console.log(customer);
+    return customer;
+  }
+
+  
+
   
 }
 
