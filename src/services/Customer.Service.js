@@ -1,7 +1,9 @@
 let customers = [//zasto ovo nije unutar klase CustomerService?
   { id: 1, firstName: 'Pera', lastName: 'Peric', email: 'peric@pera.com', boughtProducts: [] },
   { id: 2, firstName: 'Zika', lastName: 'Zikic', email: 'zika@gmail.com', boughtProducts: [] }
-]
+];
+
+let lastId = 2;
 
 export default class CustomerService {
   getAllCustomers() {
@@ -9,30 +11,21 @@ export default class CustomerService {
   }
 
   deleteCustomerService(id) {
-    console.log('Service activated');
+    //console.log('Service activated');
     customers = customers.filter(customer => customer.id !== id);
-    console.log(customers)
+    //console.log(customers)
   }
 
-  /*
-  createCustomer(){
-    return {
-      id: this.idCreator(),
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-    }
+  createCustomer(newCustomer){
+    this.idCreator(newCustomer);
+    customers.unshift(newCustomer);
   }
-
-  addCustomer(){
-    this.customers.unshift(this.createCustomer());
+  
+  idCreator(newCustomer){
+    lastId ++;
+    newCustomer.id = lastId;
   }
-
-  idCreator(){
-    let id = "id" + Math.random().toString(16).slice(2);
-    return id;
-  }
-  */
+  
 }
 
 export const customerService = new CustomerService();
