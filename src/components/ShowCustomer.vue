@@ -20,20 +20,20 @@ export default {
       customer: ''
     }
   },
-  created() {
+  created() {//this kicks in automatically on page render
     this.updateCustomerDetails(this.id);
   },
   computed: {
-    id() {
+    id() {//this gets the id from url
       return this.$route.params.id;
     }
   },
   watch: {
-    id: function(val) {
+    id: function(val) {//this is watching id for change
       this.updateCustomerDetails(val);
     }
   },
-  methods: {
+  methods: {//this is called on page start or on id change
     updateCustomerDetails(id) {
       this.customer = customerService.showCustomer(id);
     }

@@ -15,9 +15,18 @@ export default class ProductService {
     console.log(products);
   }
 
-  increment(product){
+  increase(product){
+    product.quantity++;//ennek miert van direkt hozzaferese az adott produkthoz az arraybol????????
+  }
+
+  decrease(product){
+    if (product.quantity > 0) {
+      product.quantity--;
+    }
     
   }
+
+  
 }
 
 
