@@ -34,7 +34,7 @@ export default {
       this.updateCustomerDetails(val);
     }
   },
-  methods: {//this is called on page start or on id change
+  methods: {//this is called either on page start or on id change
     updateCustomerDetails(id) {
       this.customer = customerService.showCustomer(id);
     }
@@ -42,6 +42,3 @@ export default {
 }
 </script>
 
-<style>
-
-</style>

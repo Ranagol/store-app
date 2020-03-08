@@ -24,13 +24,6 @@
       <button @click.prevent="confirm(product)" class="btn btn-success">Confirm</button>
       <router-link to="/products" class="btn btn-warning">Cancel</router-link>
     </div>
-    
-    
-    
-
-  
-    
-
   </div>
 </template>
 
@@ -65,7 +58,6 @@ export default {
     }
   },
   methods: {//this is called on page start or on id change
-
     updateProductDetails(id) {
       this.product = productService.showProduct(id);
       this.checkStock(this.product);
@@ -78,7 +70,6 @@ export default {
         productService.decrease(product);
         console.log('confirm activated');
         customerService.buyProduct(product, this.selectedCustomer);
-        
       }
     },
 
@@ -93,6 +84,3 @@ export default {
 }
 </script>
 
-<style>
-
-</style>

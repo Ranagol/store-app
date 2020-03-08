@@ -22,9 +22,6 @@
       </tr>
       <router-view></router-view>
     </table>
-
-
-
   </div>
 </template>
 
@@ -57,12 +54,7 @@ export default {
     getProductRoute(id){
       return `/products/${id}`;
     }
-
   }
-
 }
 </script>
 
-<style>
-
-</style>

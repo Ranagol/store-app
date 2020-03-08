@@ -57,8 +57,6 @@ export default {
   },
   methods: {
     deleteCustomer(id){
-      //console.log(id);
-      //console.log('service called');
       customerService.deleteCustomerService(id);//OK, ovde cemo imati problem. Iako ce servis izbrisati customera na osnovu ove komande, to ce se desiti na servisu, i ova strana to nece znati, pa izbrisani customer nece nestati sa displeja...
       this.customers = customerService.getAllCustomers()//...Zato nam je potrebna ova linija ovde. ovo ovako refreshuje sve, i ovako ce se prikazati refreshovana strana bez izbrisanog customera.
       
@@ -71,24 +69,12 @@ export default {
       let newCustomer = { firstName: this.firstName, lastName: this.lastName, email: this.email, boughtProducts: [] }
       customerService.createCustomer(newCustomer);
     }
-    
-
   }
 }
 </script>
-
-
-
-
-
-
-
-
-
 
 <style>
 .top-margin{
   margin-top: 12px;
 }
-
 </style>

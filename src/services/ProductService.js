@@ -10,30 +10,23 @@ export default class ProductService {
   }
 
   filterProducts(title) {
-    console.log('Service activated');
     products = products.filter(product => product.title !== title);
-    console.log(products);
   }
 
   increase(product){
-    product.quantity++;//ennek miert van direkt hozzaferese az adott produkthoz az arraybol????????
+    product.quantity++;//Auh... Ovo ne kontam, Vanja. Vidim da radi, ali ne znam zasto. Kako moze JS da sam pronadje ovaj produkt objekat u products array (i da mu menja kolicinu), bez toga da mu je pre toga receno da treba da trazi u products array????
   }
 
   decrease(product){
     if (product.quantity > 0) {
-      product.quantity--;//ennek miert van direkt hozzaferese az adott produkthoz az arraybol????????
+      product.quantity--;
     }
-    
   }
 
   showProduct(id){
     let product = products.find(product => product.id == id);
     return product;
   }
-
-  
 }
-
-
 
 export const productService = new ProductService();

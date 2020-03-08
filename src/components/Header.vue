@@ -5,22 +5,7 @@
         <router-link class="form-control" to="/customers">Customers</router-link>     
         <router-link class="form-control" to="/products">Products</router-link>
       </div>
-  </nav>
-
+    </nav>
   </div>
 </template>
 
-<script>
-
-
-export default {
-  name: 'Header',
-  components: {
-    
-  }
-}
-</script>
-
-<style>
-
-</style>

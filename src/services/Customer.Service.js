@@ -16,9 +16,7 @@ export default class CustomerService {
   }
 
   deleteCustomerService(id) {
-    //console.log('Service activated');
     customers = customers.filter(customer => customer.id !== id);
-    //console.log(customers)
   }
 
   createCustomer(newCustomer){
@@ -33,21 +31,12 @@ export default class CustomerService {
 
   showCustomer(id){
     let customer = customers.find(customer => customer.id == id);
-    // console.log(customer);
     return customer;
   }
 
   buyProduct(product, selectedCustomer){
-    console.log('buyProduct activated');
-    console.log(selectedCustomer);
-    console.log(product);
     selectedCustomer.boughtProducts.unshift(product);
-    console.log(selectedCustomer);
   }
-
-  
-
-  
 }
 
 export const customerService = new CustomerService();
