@@ -28,7 +28,7 @@ export default class CustomerService {
 
   showCustomer(id){
     let customer = customers.find(customer => customer.id == id);
-    console.log(customer);
+    // console.log(customer);
     return customer;
   }
 

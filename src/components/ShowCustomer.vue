@@ -15,18 +15,29 @@
 import { customerService } from '../services/Customer.Service';
 export default {
   name: 'ShowCustomer',
-  data(){
+  data() {
     return {
-      id: this.$route.params.id,
-      customer: '',
+      customer: ''
     }
   },
-  created(){
-    console.log('created hook activated');
-    this.customer = customerService.showCustomer(this.id);
-    this.customer = JSON.parse(JSON.stringify(this.customer));
+  created() {
+    this.updateCustomerDetails(this.id);
   },
-  
+  computed: {
+    id() {
+      return this.$route.params.id;
+    }
+  },
+  watch: {
+    id: function(val) {
+      this.updateCustomerDetails(val);
+    }
+  },
+  methods: {
+    updateCustomerDetails(id) {
+      this.customer = customerService.showCustomer(id);
+    }
+  }
 }
 </script>
 
