@@ -4,15 +4,18 @@ import VueRouter from 'vue-router';
 import AppCustomers from './components/AppCustomers';
 import AppProducts from './components/AppProducts';
 import ShowCustomer from './components/ShowCustomer';
-
+import ShowProduct from './components/ShowProduct';
 
 const routes = [
   { path: '/customers', component: AppCustomers,
     children: [
-      { path: ':id', name: 'customer',  component: ShowCustomer},
+      { path: ':id', name: 'customer',  component: ShowCustomer },
     ]},
 
-  { path: '/products', component: AppProducts },  
+  { path: '/products', component: AppProducts,
+    children: [
+      { path: ':id', name: 'product', component: ShowProduct }
+    ] },  
 ];
 
 Vue.use(VueRouter);

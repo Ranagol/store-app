@@ -21,9 +21,14 @@ export default class ProductService {
 
   decrease(product){
     if (product.quantity > 0) {
-      product.quantity--;
+      product.quantity--;//ennek miert van direkt hozzaferese az adott produkthoz az arraybol????????
     }
     
+  }
+
+  showProduct(id){
+    let product = products.find(product => product.id == id);
+    return product;
   }
 
   

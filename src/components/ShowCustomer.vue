@@ -3,8 +3,9 @@
     <h3>Customer: {{ customer.firstName }}  {{ customer.lastName }}</h3>
     <p>Email: {{ customer.email }}</p>
     <p>Kupljeni proizvodi:</p>
+    
     <ol>
-      <li></li>
+      <li v-for="(product, i) in customer.boughtProducts" :key="i">{{ product.title }}</li>
     </ol>
     
   </div>

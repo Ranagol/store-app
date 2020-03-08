@@ -18,8 +18,9 @@
         <td>{{ filteredProduct.quantity }}</td>
         <td><button @click="increase(filteredProduct)" class="btn btn-danger" >Lager+</button></td>
         <td><button @click="decrease(filteredProduct)" class="btn btn-warning">Lager-</button></td>
-        <td><button class="btn btn-info">Prodaj</button></td>
+        <td><router-link class="btn btn-info" :to="getProductRoute(filteredProduct.id)">Prodaj</router-link></td>
       </tr>
+      <router-view></router-view>
     </table>
 
 
@@ -52,6 +53,10 @@ export default {
     decrease(filteredProduct){
       productService.decrease(filteredProduct);
     },
+
+    getProductRoute(id){
+      return `/products/${id}`;
+    }
 
   }
 
