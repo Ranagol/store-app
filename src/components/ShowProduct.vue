@@ -19,8 +19,6 @@
         </option>
       </select><br>
 
-      <p>Selected customer: {{ selectedCustomer }}</p>
-
       <button @click.prevent="confirm(product)" class="btn btn-success">Confirm</button>
       <router-link to="/products" class="btn btn-warning">Cancel</router-link>
     </div>
@@ -44,7 +42,6 @@ export default {
   created() {//this kicks in first
     this.updateProductDetails(this.id);
     this.customers = customerService.getAllCustomers();
-    console.log(this.customers);
   },
 
   computed: {
@@ -68,7 +65,6 @@ export default {
         alert('You must select a customer!');
       } else {
         productService.decrease(product);
-        console.log('confirm activated');
         customerService.buyProduct(product, this.selectedCustomer);
       }
     },
